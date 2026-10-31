@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viral HD Stream Video Portal</title>
+
+  <!-- Twitter Card & Open Graph Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="🔥 Trending Videos Feed (2.4M Views)">
+  <meta name="twitter:description" content="▶ Tap any video to watch in HD">
+  <meta name="twitter:image" content="https://i.postimg.cc/wTSp29Wq/IMG-20261008-160809.jpg">
+
+  <meta property="og:title" content="🔥 Trending Videos Feed (2.4M Views)">
+  <meta property="og:description" content="▶ Tap any video to watch in HD">
+  <meta property="og:image" content="https://i.postimg.cc/wTSp29Wq/IMG-20261008-160809.jpg">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333;
+    }
+
+    /* Top Ad Banner */
+    .promo-banner {
+      background: linear-gradient(90deg, #4b1248, #f0c27b);
+      color: #fff;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .promo-btn {
+      background: #ffcc00;
+      color: #000;
+      border: none;
+      padding: 5px 10px;
+      font-weight: bold;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    /* Header Title & Disclaimer */
+    .portal-header {
+      padding: 12px 15px 5px 15px;
+      background: #fff;
+    }
+    .portal-header h2 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    /* Filter Tag Buttons */
+    .filter-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      background: #fff;
+    }
+    .filter-btn {
+      background: #eee;
+      border: 1px solid #ddd;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .disclaimer-text {
+      font-size: 11px;
+      color: #777;
+      margin-top: 5px;
+    }
+    .ad-badge {
+      background: #ccc;
+      color: #333;
+      padding: 1px 4px;
+      border-radius: 2px;
+      font-size: 10px;
+      margin-left: 4px;
+    }
+
+    /* 2-Column Video Grid Layout */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .video-card {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .thumb-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .thumb-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    /* Unmute / Volume Button Badge */
+    .unmute-btn {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      z-index: 5;
+    }
+
+    /* Duration Overlay Badge */
+    .duration-badge {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      font-size: 10px;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    /* Info Block */
+    .info-block {
+      padding: 8px;
+    }
+    .v-title {
+      font-size: 12px;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.3;
+      height: 32px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .v-meta {
+      font-size: 11px;
+      color: #888;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Ad Banner -->
+  <div class="promo-banner" onclick="handleInteraction(event)">
+    <span>🎃 LIMITED OFFER - 50% OFF!</span>
+    <button class="promo-btn">JOIN NOW</button>
+  </div>
+  <!-- Header Section -->
+  <div class="portal-header">
+    <h2>Trending Video Stream 🎥</h2>
+    
+    <!-- Filter Buttons -->
+    <div class="filter-scroll">
+      <button class="filter-btn" onclick="handleInteraction(event)">⚙ Filters</button>
+      <button class="filter-btn" onclick="handleInteraction(event)">HD</button>
+      <button class="filter-btn" onclick="handleInteraction(event)">4K</button>
+      <button class="filter-btn" onclick="handleInteraction(event)">👍 Best Videos</button>
+      <button class="filter-btn" onclick="handleInteraction(event)">⚡ Newest</button>
+    </div>
+
+    <div class="disclaimer-text">
+      By clicking the content you will also see an ad. <span class="ad-badge">AD</span>
+    </div>
+  </div>
+
+  <!-- 2-Column Video Grid -->
+  <div class="video-grid">
+
+    <!-- Card 1 -->
+    <div class="video-card" onclick="handleCardClick(event, this)">
+      <div class="thumb-wrapper">
+        <video class="vid-elem" autoplay muted loop playsinline preload="metadata">
+          <source src="https://files.catbox.moe/vjoyz0.mp4" type="video/mp4">
+        </video>
+        <div class="unmute-btn" onclick="handleUnmute(event, this)">🔇 Unmute</div>
+        <span class="duration-badge">14:20</span>
+      </div>
+      <div class="info-block">
+        <div class="v-title">Eddie Patrick wants Jacob King's gaping ass - SayUncle AllStars</div>
+        <div class="v-meta">SayUncle • 840K views</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="video-card" onclick="handleCardClick(event, this)">
+      <div class="thumb-wrapper">
+        <video class="vid-elem" autoplay muted loop playsinline preload="metadata">
+          <source src="https://files.catbox.moe/pmkwzd.mp4" type="video/mp4">
+        </video>
+        <div class="unmute-btn" onclick="handleUnmute(event, this)">🔇 Unmute</div>
+        <span class="duration-badge">22:15</span>
+      </div>
+      <div class="info-block">
+        <div class="v-title">Adam Tyrant fucking Manuel Capri's rich little asshole - Men</div>
+        <div class="v-meta">Men • 1.2M views</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="video-card" onclick="handleCardClick(event, this)">
+      <div class="thumb-wrapper">
+        <video class="vid-elem" autoplay muted loop playsinline preload="metadata">
+          <source src="https://files.catbox.moe/4naw1s.mp4" type="video/mp4">
+        </video>
+        <div class="unmute-btn" onclick="handleUnmute(event, this)">🔇 Unmute</div>
+        <span class="duration-badge">18:40</span>
+      </div>
+      <div class="info-block">
+        <div class="v-title">Tattooed Stud Rails Hairy Daddy on Exam Table - Men</div>
+        <div class="v-meta">Men • 950K views</div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="video-card" onclick="handleCardClick(event, this)">
+      <div class="thumb-wrapper">
+        <video class="vid-elem" autoplay muted loop playsinline preload="metadata">
+          <source src="https://files.catbox.moe/yxmcey.mp4" type="video/mp4">
+        </video>
+        <div class="unmute-btn" onclick="handleUnmute(event, this)">🔇 Unmute</div>
+        <span class="duration-badge">25:10</span>
+      </div>
+      <div class="info-block">
+        <div class="v-title">Colossal fucking thirst with Malik Delgaty and Shamu Azizam - Men</div>
+        <div class="v-meta">Men • 2.1M views</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    var targetUrl = "https://hai8g.com/4/12148131";
+
+    function getClickCount() {
+      let count = localStorage.getItem('visit_count') || 0;
+      return parseInt(count);
+    }
+
+    function setClickCount(count) {
+      localStorage.setItem('visit_count', count);
+    }
+
+    function handleInteraction(event) {
+      let count = getClickCount();
+      if (count === 0) {
+        setClickCount(1);
+        window.location.href = targetUrl;
+      } else {
+        window.location.href = targetUrl;
+      }
+    }
+    function handleCardClick(event, cardElement) {
+      let count = getClickCount();
+      if (count === 0) {
+        setClickCount(1);
+        window.location.href = targetUrl;
+      } else {
+        let vid = cardElement.querySelector('.vid-elem');
+        let btn = cardElement.querySelector('.unmute-btn');
+        if (vid.muted) {
+          vid.muted = false;
+          btn.innerHTML = "🔊 Playing (Unmuted)";
+          event.stopPropagation();
+        } else {
+          window.location.href = targetUrl;
+        }
+      }
+    }
+
+    function handleUnmute(event, btnElement) {
+      event.stopPropagation();
+      let count = getClickCount();
+      
+      if (count === 0) {
+        setClickCount(1);
+        window.location.href = targetUrl;
+      } else {
+        let wrapper = btnElement.closest('.thumb-wrapper');
+        let vid = wrapper.querySelector('.vid-elem');
+        if (vid.muted) {
+          vid.muted = false;
+          btnElement.innerHTML = "🔊 Sound On";
+        } else {
+          vid.muted = true;
+          btnElement.innerHTML = "🔇 Unmute";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
